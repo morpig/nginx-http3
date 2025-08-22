@@ -1,4 +1,4 @@
-name: Build release containers and create binary release
+name: Build release containers and create binary release - trigger
 
 on:
   push:
