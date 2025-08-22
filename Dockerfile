@@ -25,6 +25,7 @@ ARG GID=1000
 COPY --link ["patches/nginx_dynamic_tls_records.patch", "/usr/src/nginx_dynamic_tls_records.patch"]
 COPY --link ["patches/use_openssl_md5_sha1.patch", "/usr/src/use_openssl_md5_sha1.patch"]
 COPY --link ["patches/aws-lc-nginx.patch", "/usr/src/aws-lc-nginx.patch"]
+COPY --link ["patches/quic_path_migration.patch", "/usr/src/quic_path_migration.patch"]
 COPY --link ["scratchfs", "/scratchfs"]
 
 RUN <<EOF
@@ -233,6 +234,7 @@ cd /usr/src/nginx
 patch -p1 < /usr/src/nginx_dynamic_tls_records.patch || exit 1
 patch -p1 < /usr/src/use_openssl_md5_sha1.patch || exit 1
 patch -p1 < /usr/src/aws-lc-nginx.patch || exit 1
+patch -p1 < /usr/src/quic_path_migration.patch || exit 1
 CC=/usr/bin/clang \
 CXX=/usr/bin/clang++ \
 ./configure \
