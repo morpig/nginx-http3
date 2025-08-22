@@ -2,8 +2,8 @@ name: Build release containers and create binary release - trigger
 
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 
 jobs:
   build-linux-containers:
