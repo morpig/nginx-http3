@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-linux-containers:
-    runs-on: ubuntu-latest
+    runs-on: jkt
     name: Build Linux Containers
     if: github.event_name == 'push'
     strategy:
@@ -62,7 +62,7 @@ jobs:
           retention-days: 1
 
   build-freebsd:
-    runs-on: ubuntu-latest
+    runs-on: jkt
     name: Build FreeBSD version
     steps:
       - name: Checkout from GitHub
@@ -89,7 +89,7 @@ jobs:
     needs:
       - build-freebsd
       - build-linux-containers
-    runs-on: ubuntu-latest
+    runs-on: jkt
     name: Create Release
     steps:
       - name: Checkout from GitHub
